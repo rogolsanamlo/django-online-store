@@ -1,0 +1,60 @@
+{% if type == 3 %}
+    <div class="products-list__item">
+        <div class="product-card">
+            {% if product.get_number_in_warehouse > 0 %}
+                <div class="product-card__badges-list">
+                    <div class="product-card__badge product-card__badge--new">جدید</div>
+                </div>
+            {% endif %}
+
+            <div class="product-card__image">
+                <a href="{{ product.get_absolute_url }}">
+                    <img src="{{ media_url }}{{ product.image_name }}" alt="{{ product.product_name }}">
+                </a>
+            </div>
+
+            <div class="product-card__info">
+                <div class="product-card__name">
+                    <a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a>
+                </div>
+            </div>
+
+            <div class="product-card__actions">
+                <div class="product-card__availability">
+                    موجودی:
+                    {% if product.get_number_in_warehouse > 0 %}
+                        <span class="text-success">موجود در انبار</span>
+                    {% else %}
+                        <span class="text-danger">ناموجود</span>
+                    {% endif %}
+                </div>
+
+                {% include "partials/products/card_price.html" %}
+                {% include "partials/products/card_buttons.html" %}
+            </div>
+        </div>
+    </div>
+{% else %}
+    <div class="product-card" style="width: 200px !important; margin-left: 12px;">
+        <div class="product-card__image">
+            <a href="{{ product.get_absolute_url }}">
+                <img src="{{ media_url }}{{ product.image_name }}" alt="{{ product.product_name }}">
+            </a>
+        </div>
+
+        {% if type == 2 %}
+            <div class="new-badge">جدید</div>
+        {% endif %}
+
+        <div class="product-card__info">
+            <div class="product-card__name">
+                <a href="{{ product.get_absolute_url }}">{{ product.product_name }}</a>
+            </div>
+        </div>
+
+        <div class="product-card__actions">
+            {% include "partials/products/card_price.html" %}
+            {% include "partials/products/card_buttons.html" %}
+        </div>
+    </div>
+{% endif %}

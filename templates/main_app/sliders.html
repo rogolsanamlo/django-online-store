@@ -1,0 +1,33 @@
+<div class="container hero-wrapper">
+    <div class="hero-slider" data-hero-slider>
+        {% for slide in sliders %}
+            <a class="hero-slider__slide{% if forloop.first %} is-active{% endif %}"
+               href="{{ slide.slider_link|default:'#' }}"
+               style="background-image: url('{{ media_url }}{{ slide.image_name }}')">
+                <span class="hero-slider__text">
+                    <span class="hero-slider__title">{{ slide.slider_title1|default_if_none:"" }}</span>
+                    <span class="hero-slider__subtitle">{{ slide.slider_title2|default_if_none:"" }}</span>
+                    <span class="hero-slider__subtitle">{{ slide.slider_title3|default_if_none:"" }}</span>
+                </span>
+            </a>
+        {% empty %}
+            <a class="hero-slider__slide is-active"
+               href="{% url 'products:product_groups' %}"
+               style="background-image: linear-gradient(135deg, #f23f54, #ff8a65)">
+                <span class="hero-slider__text">
+                    <span class="hero-slider__title">به فروشگاه خوش آمدید</span>
+                    <span class="hero-slider__subtitle">محصولات را بر اساس دسته‌بندی ببینید</span>
+                </span>
+            </a>
+            <a class="hero-slider__slide"
+               href="{% url 'products:product_groups' %}"
+               style="background-image: linear-gradient(135deg, #1c7ed6, #4dabf7)">
+                <span class="hero-slider__text">
+                    <span class="hero-slider__title">ارسال رایگان</span>
+                    <span class="hero-slider__subtitle">برای سفارش‌های بالای ۵۰۰ هزار تومان</span>
+                </span>
+            </a>
+        {% endfor %}
+        <div class="hero-slider__dots" data-hero-dots></div>
+    </div>
+</div>

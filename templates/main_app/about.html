@@ -1,0 +1,30 @@
+{% extends "main_template.html" %}
+
+{% block title %}درباره ما{% endblock title %}
+
+{% block content %}
+<div class="site__body">
+  <div class="page-header">
+    <div class="page-header__container container">
+      <div class="page-header__breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'main:index' %}">خانه</a> /</li>
+            <li class="active" aria-current="page">درباره ما</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="page-header__title"><h1>درباره ما</h1></div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="container">
+      <div class="card"><div class="card-body">
+        <p>این فروشگاه یک پروژه‌ی نمونه‌ی فروشگاه اینترنتی است که با فریم‌ورک Django ساخته شده است.</p>
+        <p>امکانات اصلی: دسته‌بندی و فیلتر کالاها، سبد خرید، کد تخفیف، پرداخت آنلاین از طریق درگاه زرین‌پال،
+          مدیریت موجودی انبار، و ثبت نظر، امتیاز و علاقه‌مندی برای کاربران.</p>
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

@@ -1,0 +1,33 @@
+<div class="product-card__buttons">
+    {% if product.get_number_in_warehouse > 0 %}
+        <button class="btn btn-primary product-card__addtocart"
+                type="button"
+                data-action="add-to-cart" data-product-id="{{ product.id }}"
+                data-qty="1">
+            افزودن به سبد
+        </button>
+    {% endif %}
+
+    {% if user.is_authenticated %}
+        <button class="btn btn-light product-card__wishlist"
+                type="button"
+                title="افزودن به علاقه‌مندی‌ها"
+                data-action="toggle-favorite" data-product-id="{{ product.id }}">
+            <i class="{% if product.get_user_favorite %}fas{% else %}far{% endif %} fa-heart"></i>
+        </button>
+    {% else %}
+        <a class="btn btn-light product-card__wishlist"
+           href="{% url 'accounts:login' %}?next={{ request.get_full_path|urlencode }}"
+           title="برای افزودن به علاقه‌مندی‌ها وارد شوید">
+            <i class="far fa-heart"></i>
+        </a>
+    {% endif %}
+
+    <button class="btn btn-light product-card__compare"
+            type="button"
+            title="مقایسه"
+            data-action="add-to-compare" data-product-id="{{ product.id }}"
+            data-group-id="{{ product.getMainProductGroups|default:0 }}">
+        <i class="fas fa-random"></i>
+    </button>
+</div>

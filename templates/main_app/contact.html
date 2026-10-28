@@ -1,0 +1,31 @@
+{% extends "main_template.html" %}
+
+{% block title %}تماس با ما{% endblock title %}
+
+{% block content %}
+<div class="site__body">
+  <div class="page-header">
+    <div class="page-header__container container">
+      <div class="page-header__breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'main:index' %}">خانه</a> /</li>
+            <li class="active" aria-current="page">تماس با ما</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="page-header__title"><h1>تماس با ما</h1></div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="container">
+      <div class="card"><div class="card-body">
+        <ul class="list-unstyled mb-0">
+          <li class="mb-2"><i class="fas fa-map-marker-alt"></i>&nbsp; ملایر، خیابان شهدا</li>
+          <li class="mb-2"><i class="fas fa-phone"></i>&nbsp; <span class="ltr_text">081-45231</span></li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

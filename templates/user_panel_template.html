@@ -1,0 +1,44 @@
+{% extends "main_template.html" %}
+
+{% block content %}
+    <div class="site__body">
+        <div class="page-header">
+            <div class="page-header__container container">
+                <div class="page-header__title">
+                    <h1>حساب کاربری</h1>
+                </div>
+            </div>
+        </div>
+        <div class="block">
+            <div class="container">
+                <div class="row">
+                    <div class="col-12 col-lg-3 d-flex">
+                        <div class="account-nav flex-grow-1">
+                            <h4 class="account-nav__title">منو اصلی</h4>
+                            <ul>
+                                <li class="account-nav__item account-nav__item--action">
+                                    <a href="{% url 'accounts:userpanel' %}">داشبورد</a>
+                                </li>
+                                <li class="account-nav__item">
+                                    <a href="{% url 'accounts:update_profile' %}">ویرایش پروفایل</a>
+                                </li>
+                                <li class="account-nav__item">
+                                    <a href="{% url 'accounts:show_user_payments' %}">سابقه پرداخت</a>
+                                </li>
+                                <li class="account-nav__item">
+                                    <a href="{% url 'accounts:change_my_password' %}">تغییر رمز عبور</a>
+                                </li>
+                                <li class="account-nav__item">
+                                    <a href="{% url 'accounts:logout' %}">خروج</a>
+                                </li>
+                            </ul>
+                        </div>
+                    </div>
+                    <div class="col-12 col-lg-9 mt-4 mt-lg-0">
+                        {% block panel %}{% endblock panel %}
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock content %}

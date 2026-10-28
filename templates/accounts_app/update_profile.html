@@ -1,0 +1,44 @@
+{% extends "user_panel_template.html" %}
+{% load static %}
+{% load render_partial %}
+
+{% block title %}
+    فروشگاه
+{% endblock title %}
+
+{% block panel %}
+    <div class="block">
+        <div class="container">
+            <div class="row d-flex justify-content-center">
+                <div class="col-md-9">
+                    <div class="card flex-grow-1 mb-mb-0">
+                        <div class="card-body">
+                            <h3 class="card-title">ویرایش پروفایل</h3>
+
+                            <form action="" method="post" enctype="multipart/form-data">
+                                {% csrf_token %}
+                                {{ form.as_p }}
+
+                                {% if image_url %}
+                                    <img src="{{ media_url }}{{ image_url }}"
+                                         style="width: 100px; height: 100px;">
+                                {% else %}
+                                    <img src="{% static 'images/customer/nophoto.jpg' %}" alt="">
+                                {% endif %}
+
+                                <div class="form-group">
+                                    <button type="submit" class="btn btn-primary mt-4">
+                                        ویرایش
+                                    </button>
+                                    <a href="{% url 'accounts:userpanel' %}" class="btn btn-info mt-4">
+                                        انصراف
+                                    </a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+{% endblock panel %}

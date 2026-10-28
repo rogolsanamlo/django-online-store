@@ -1,0 +1,107 @@
+{% load humanize %}
+
+{% if products %}
+    <div class="container compare-page">
+        <h1 class="compare-page__title">مقایسه کالاها</h1>
+        <div class="table-responsive">
+            <table class="table table-bordered compare-table">
+                <thead>
+                    <tr>
+                        <th class="compare-table__label"></th>
+                        {% for product in products %}
+                            <th class="compare-table__product">
+                                <button type="button"
+                                        class="btn btn-sm btn-light compare-table__remove"
+                                        title="حذف از مقایسه"
+                                        data-action="remove-from-compare"
+                                        data-product-id="{{ product.id }}">
+                                    <i class="fa fa-times"></i>
+                                </button>
+                                <a href="{{ product.get_absolute_url }}">
+                                    <img src="{{ media_url }}{{ product.image_name }}"
+                                         alt="{{ product.product_name }}">
+                                </a>
+                                <a class="compare-table__name" href="{{ product.get_absolute_url }}">
+                                    {{ product.product_name }}
+                                </a>
+                            </th>
+                        {% endfor %}
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <th scope="row">قیمت</th>
+                        {% for product in products %}
+                            <td>
+                                {% if product.price > product.get_price_by_discount %}
+                                    <del>{{ product.price|intcomma }}</del>
+                                    <strong class="text-danger">
+                                        {{ product.get_price_by_discount|intcomma }} تومان
+                                    </strong>
+                                {% else %}
+                                    <strong>{{ product.price|intcomma }} تومان</strong>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">موجودی</th>
+                        {% for product in products %}
+                            <td>
+                                {% if product.get_number_in_warehouse > 0 %}
+                                    <span class="text-success">موجود</span>
+                                {% else %}
+                                    <span class="text-danger">ناموجود</span>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">برند</th>
+                        {% for product in products %}
+                            <td>{{ product.brand.brand_title|default:"-" }}</td>
+                        {% endfor %}
+                    </tr>
+                    <tr>
+                        <th scope="row">امتیاز کاربران</th>
+                        {% for product in products %}
+                            <td>{{ product.get_average_score }}</td>
+                        {% endfor %}
+                    </tr>
+                    {% for row in rows %}
+                        <tr>
+                            <th scope="row">{{ row.feature }}</th>
+                            {% for value in row.values %}
+                                <td>{{ value }}</td>
+                            {% endfor %}
+                        </tr>
+                    {% endfor %}
+                    <tr>
+                        <th scope="row"></th>
+                        {% for product in products %}
+                            <td>
+                                {% if product.get_number_in_warehouse > 0 %}
+                                    <button type="button"
+                                            class="btn btn-primary btn-sm"
+                                            data-action="add-to-cart"
+                                            data-product-id="{{ product.id }}"
+                                            data-qty="1">
+                                        افزودن به سبد
+                                    </button>
+                                {% endif %}
+                            </td>
+                        {% endfor %}
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+{% else %}
+    <div class="container compare-page compare-page--empty">
+        <i class="fa fa-random"></i>
+        <p>هنوز کالایی برای مقایسه انتخاب نکرده‌اید.</p>
+        <a class="btn btn-primary" href="{% url 'products:product_groups' %}">
+            مشاهده کالاها
+        </a>
+    </div>
+{% endif %}

@@ -1,0 +1,104 @@
+{% load static %}
+{% load render_partial %}
+
+<div class="site-header__nav-panel">
+    <div class="nav-panel">
+        <div class="nav-panel__container container">
+            <div class="nav-panel__row">
+                <div class="nav-panel__logo">
+                    <a class="site-logo site-logo--small" href="{% url 'main:index' %}">
+                        <i class="fas fa-shopping-bag"></i>
+                    </a>
+                </div>
+
+                <div class="nav-panel__nav-links nav-links">
+                    <ul class="nav-links__list">
+                        <li class="nav-links__item nav-links__item--with-submenu">
+                            <a href="{% url 'main:index' %}">
+                                <span>
+                                    <i class="fa fa-home"></i>&nbsp; خانه
+                                </span>
+                            </a>
+                        </li>
+                        <li class="nav-links__item nav-links__item--with-submenu">
+                            <a href="{% url 'products:product_groups' %}">
+                                <span>
+                                    دسته بندی کالاها
+                                    &nbsp;
+                                    <i class="fa fa-angle-down"></i>
+                                </span>
+                            </a>
+                            {% render_partial 'products:nav_groups' %}
+                        </li>
+
+                        <li class="nav-links__item nav-links__item--with-submenu">
+                            <a href="#">
+                                <span>
+                                    حساب کاربری&nbsp;<i class="fa fa-angle-down"></i>
+                                </span>
+                            </a>
+                            <div class="nav-links__menu">
+                                {% if user.is_authenticated %}
+                                    <ul class="menu menu--layout--classic">
+                                        <li>
+                                            <a href="{% url 'accounts:userpanel' %}">پنل کاربری</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'accounts:logout' %}">خروج</a>
+                                        </li>
+                                    </ul>
+                                {% else %}
+                                    <ul class="menu menu--layout--classic">
+                                        <li>
+                                            <a href="{% url 'accounts:login' %}">ورود</a>
+                                        </li>
+                                        <li>
+                                            <a href="{% url 'accounts:register' %}">ثبت نام</a>
+                                        </li>
+                                    </ul>
+                                {% endif %}
+                            </div>
+                        </li>
+
+                        <li class="nav-links__item">
+                            <a href="{% url 'main:about' %}">
+                                <span>درباره ما</span>
+                            </a>
+                        </li>
+                        <li class="nav-links__item">
+                            <a href="{% url 'main:contact' %}">
+                                <span>تماس با ما</span>
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+
+                <div class="nav-panel__indicators">
+                    <div class="indicator">
+                        <a href="{% url 'csf:user_favorite' %}" class="indicator__button">
+                            <span class="indicator__area">
+                                <i class="fa fa-heart"></i>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="indicator">
+                        <a href="{% url 'products:compare_list' %}" class="indicator__button" title="مقایسه کالاها">
+                            <span class="indicator__area">
+                                <i class="fa fa-random"></i>
+                                <span class="indicator__value" id="compare_count" style="display: none;">0</span>
+                            </span>
+                        </a>
+                    </div>
+                    <div class="indicator">
+                        <a href="{% url 'orders:shop_cart' %}" class="indicator__button">
+                            <span class="indicator__area">
+                                <i class="fa fa-shopping-cart"></i>
+                                <span class="indicator__value" id="indicator__value">0</span>
+                            </span>
+                        </a>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

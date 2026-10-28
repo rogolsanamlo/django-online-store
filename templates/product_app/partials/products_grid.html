@@ -1,0 +1,5 @@
+{% for product in products %}
+    {% include "partials/products/product_box.html" with type=card_type %}
+{% empty %}
+    <p class="text-muted p-4">محصولی در این دسته‌بندی وجود ندارد.</p>
+{% endfor %}

@@ -1,0 +1,33 @@
+{% extends "main_template.html" %}
+
+{% block title %}قوانین و مقررات{% endblock title %}
+
+{% block content %}
+<div class="site__body">
+  <div class="page-header">
+    <div class="page-header__container container">
+      <div class="page-header__breadcrumb">
+        <nav aria-label="breadcrumb">
+          <ol class="breadcrumb">
+            <li class="breadcrumb-item"><a href="{% url 'main:index' %}">خانه</a> /</li>
+            <li class="active" aria-current="page">قوانین و مقررات</li>
+          </ol>
+        </nav>
+      </div>
+      <div class="page-header__title"><h1>قوانین و مقررات</h1></div>
+    </div>
+  </div>
+  <div class="block">
+    <div class="container">
+      <div class="card"><div class="card-body">
+        <p>استفاده از این فروشگاه به معنای پذیرش قوانین زیر است:</p>
+        <ul>
+          <li>مشخصات و قیمت کالاها در زمان ثبت سفارش ملاک عمل است.</li>
+          <li>پرداخت‌ها از طریق درگاه امن زرین‌پال انجام می‌شود و اطلاعات کارت بانکی در این سایت ذخیره نمی‌شود.</li>
+          <li>مسئولیت صحت اطلاعات واردشده (آدرس و شماره تماس) بر عهده‌ی کاربر است.</li>
+        </ul>
+      </div></div>
+    </div>
+  </div>
+</div>
+{% endblock content %}

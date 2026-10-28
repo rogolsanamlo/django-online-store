@@ -1,0 +1,16 @@
+# Python 3.12+
+Django>=5.2.8,<5.3
+django-ckeditor==6.7.3
+django-js-asset==3.1.2
+django-admin-decorators==0.1
+django-admin-list-filter-dropdown==1.0.3
+django-render-partial==0.4
+django-filter==26.1
+jdatetime==6.1.0
+kavenegar==1.1.2
+pillow==12.0.0
+python-dotenv==1.2.4
+requests==2.32.4
+
+# Only needed when DB_ENGINE=mysql (see .env.example)
+# mysqlclient==2.2.7

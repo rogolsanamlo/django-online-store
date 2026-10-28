@@ -1,0 +1,12 @@
+{% load humanize %}
+
+<div class="product-card__prices">
+    {% if product.get_number_in_warehouse <= 0 %}
+        <span style="color: red;">ناموجود</span>
+    {% elif product.price > product.get_price_by_discount %}
+        <del>{{ product.price|intcomma }} تومان</del>
+        <span style="color: red;">{{ product.get_price_by_discount|intcomma }} تومان</span>
+    {% else %}
+        <span>{{ product.price|intcomma }} تومان</span>
+    {% endif %}
+</div>

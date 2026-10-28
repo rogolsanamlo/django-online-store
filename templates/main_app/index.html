@@ -1,0 +1,72 @@
+{% extends "main_template.html" %}
+{% load render_partial %}
+
+{% block title %}فروشگاه{% endblock title %}
+
+{% block content %}
+    <div class="site__body">
+
+        {% render_partial 'main:sliders' %}
+
+        <div class="block block-features block-features--layout--boxed">
+            <div class="container">
+                <div class="block-features__list">
+
+                    <div class="block-features__item">
+                        <div class="block-features__icon">
+                            <i class="fa fa-shipping-fast"></i>
+                        </div>
+                        <div class="block-features__content">
+                            <div class="block-features__title">ارسال رایگان</div>
+                            <div class="block-features__subtitle">برای سفارش‌های بالای ۵۰۰ هزار تومان</div>
+                        </div>
+                    </div>
+
+                    <div class="block-features__divider"></div>
+
+                    <div class="block-features__item">
+                        <div class="block-features__icon">
+                            <i class="fa fa-shield-alt"></i>
+                        </div>
+                        <div class="block-features__content">
+                            <div class="block-features__title">پرداخت امن</div>
+                            <div class="block-features__subtitle">پرداخت آنلاین از طریق زرین‌پال</div>
+                        </div>
+                    </div>
+
+                    <div class="block-features__divider"></div>
+
+                    <div class="block-features__item">
+                        <div class="block-features__icon">
+                            <i class="fa fa-sms"></i>
+                        </div>
+                        <div class="block-features__content">
+                            <div class="block-features__title">ثبت‌نام با پیامک</div>
+                            <div class="block-features__subtitle">فعال‌سازی سریع حساب کاربری</div>
+                        </div>
+                    </div>
+
+                    <div class="block-features__divider"></div>
+
+                    <div class="block-features__item">
+                        <div class="block-features__icon">
+                            <i class="fa fa-percent"></i>
+                        </div>
+                        <div class="block-features__content">
+                            <div class="block-features__title">کد تخفیف</div>
+                            <div class="block-features__subtitle">اعمال کوپن در مرحله‌ی پرداخت</div>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+        {% render_partial 'products:cheapest_products' %}
+
+        {% render_partial 'products:popular_product_groups' %}
+
+        {% render_partial 'products:last_products' %}
+
+    </div>
+{% endblock content %}

@@ -1,0 +1,20 @@
+<ul class="filter-categories__list">
+    {% for group, sub_groups in dict.items %}
+        <li class="filter-categories__item filter-categories__item--parent">
+            <a href="{% if group.slug %}{% url 'products:products_of_group' slug=group.slug %}{% else %}#{% endif %}">
+                {{ group.group_title }}
+            </a>
+        </li>
+        {% for sub in sub_groups %}
+            <li class="filter-categories__item filter-categories__item--child">
+                <a href="{% if sub.slug %}{% url 'products:products_of_group' slug=sub.slug %}{% else %}#{% endif %}">
+                    {{ sub.group_title }}
+                </a>
+            </li>
+        {% endfor %}
+    {% empty %}
+        <li class="filter-categories__item">
+            دسته‌بندی‌ای ثبت نشده است.
+        </li>
+    {% endfor %}
+</ul>

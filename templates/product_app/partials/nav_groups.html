@@ -1,0 +1,42 @@
+<div class="nav-links__megamenu nav-links__megamenu--size--nl">
+    <div class="megamenu">
+        <div class="row">
+            {% for group in groups %}
+                <div class="col-4">
+                    <ul class="megamenu__links megamenu__links--level--0">
+                        <li class="megamenu__item megamenu__item--with-submenu">
+                            {# a group with sub groups is a link too (its page lists the products of its sub groups) #}
+                            {% if group.children %}
+                                <a class="megamenu__heading" href="{{ group.url }}">{{ group.title }}</a>
+                                <ul class="megamenu__links megamenu__links--level--1">
+                                    {% for child in group.children %}
+                                        <li class="megamenu__item">
+                                            {% if child.children %}
+                                                <a class="megamenu__heading" href="{{ child.url }}">{{ child.title }}</a>
+                                                <ul>
+                                                    {% for leaf in child.children %}
+                                                        <li class="megamenu__links--level--2">
+                                                            <a href="{{ leaf.url }}">{{ leaf.title }}</a>
+                                                        </li>
+                                                    {% endfor %}
+                                                </ul>
+                                            {% else %}
+                                                <a href="{{ child.url }}">{{ child.title }}</a>
+                                            {% endif %}
+                                        </li>
+                                    {% endfor %}
+                                </ul>
+                            {% else %}
+                                <a href="{{ group.url }}">{{ group.title }}</a>
+                            {% endif %}
+                        </li>
+                    </ul>
+                </div>
+            {% empty %}
+                <div class="col-12 text-center p-3">
+                    هنوز دسته‌بندی‌ای ثبت نشده است.
+                </div>
+            {% endfor %}
+        </div>
+    </div>
+</div>
